@@ -7,7 +7,7 @@ import { fetchAvailablePlaces } from '../http.js';
 
 export default function AvailablePlaces({ onSelectPlace }) {
   
-  const [isFetching, setIsFetching] = useState();
+  const [isFetching, setIsFetching] = useState(false);
   const [availablePlaces, setAvailablePlaces] = useState([]);  
   const [error, setError] = useState();
 
