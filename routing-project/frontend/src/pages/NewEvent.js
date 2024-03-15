@@ -20,7 +20,6 @@ export async function action({request, params}) {
         description: data.get('description'),
     }
 
-
     const response = await fetch('http://localhost:8080/events', {
         method: 'POST',
         headers: {
@@ -28,6 +27,10 @@ export async function action({request, params}) {
         },
         body: JSON.stringify(eventData)
     });
+
+    if(response.status === 422) {
+        return response;
+    }
 
     if(!response.ok) {
         throw json({message: 'Could not save event.'}, {status: 500});
